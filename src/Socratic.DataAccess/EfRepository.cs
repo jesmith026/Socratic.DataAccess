@@ -16,7 +16,7 @@ namespace Socratic.DataAccess
     /// <typeparam cref="Socratic.DataAccess.Abstractions.IDbEntity" name="TEntity">
     ///     An implementation of the IDbEntity interface
     /// </typeparam>
-    public class EfRepository<TContext, TEntity> : IRepository<TContext, TEntity> 
+    public class EfRepository<TContext, TEntity> : IContextualRepository<TContext, TEntity> 
         where TEntity : class, IDbEntity 
         where TContext : DbContext
     {

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Socratic.DataAccess", "Socratic.DataAccess\Socratic.DataAccess.csproj", "{E2CC546F-D230-4519-B729-3E1AF66633B6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Socratic.DataAccess", "src\Socratic.DataAccess\Socratic.DataAccess.csproj", "{E2CC546F-D230-4519-B729-3E1AF66633B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Socratic.DataAccess.Abstractions", "Socratic.DataAccess.Abstractions\Socratic.DataAccess.Abstractions.csproj", "{5240206E-C389-40BE-8563-0D5C2CA70B11}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Socratic.DataAccess.Abstractions", "src\Socratic.DataAccess.Abstractions\Socratic.DataAccess.Abstractions.csproj", "{5240206E-C389-40BE-8563-0D5C2CA70B11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

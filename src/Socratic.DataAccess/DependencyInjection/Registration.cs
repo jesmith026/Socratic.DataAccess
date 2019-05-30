@@ -19,7 +19,7 @@ namespace Socratic.DataAccess.DependencyInjection
         public static IServiceCollection AddSocraticDataAccess<TContext>(this IServiceCollection services)
             where TContext : DbContext
         {
-            services.AddScoped<IRepositoryFactory<TContext>, EfRepositoryFactory<TContext>>();
+            services.AddScoped<IRepositoryFactory<TContext>, RepositoryFactory<TContext>>();
             services.AddScoped<IUnitOfWork<TContext>, UnitOfWork<TContext>>();
 
             return services;

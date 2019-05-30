@@ -9,13 +9,13 @@ namespace Socratic.DataAccess
     /// Dynamically create the requested repositories
     /// </summary>
     /// <typeparam cref="Microsoft.EntityFrameworkCore.DbContext" name="TContext"></typeparam>
-    public class EfRepositoryFactory<TContext> : IRepositoryFactory<TContext>
+    public class RepositoryFactory<TContext> : IRepositoryFactory<TContext>
         where TContext : DbContext
     {
         private readonly TContext context;
         private readonly Dictionary<Type, object> repoDictionary = new Dictionary<Type, object>();
         
-        public EfRepositoryFactory(TContext context)
+        public RepositoryFactory(TContext context)
         {
             this.context = context;
         }
@@ -25,10 +25,10 @@ namespace Socratic.DataAccess
         /// </summary>
         /// <typeparam cref="Microsoft.EntityFrameworkCore.DbContext" name="TContext"></typeparam>
         /// <typeparam cref="Socratic.DataAccess.Abstractions.IDbEntity" name="TEntity"></typeparam>
-        public IRepository<TContext, TEntity> Get<TEntity>() where TEntity : class, IDbEntity 
+        public IContextualRepository<TContext, TEntity> Get<TEntity>() where TEntity : class, IDbEntity 
         {            
             if (repoDictionary.TryGetValue(typeof(TEntity), out var repo))
-                return (IRepository<TContext, TEntity>)repo;
+                return (IContextualRepository<TContext, TEntity>)repo;
             
             var newRepo = new EfRepository<TContext, TEntity>(context);
 

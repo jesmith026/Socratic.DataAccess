@@ -39,7 +39,7 @@ namespace Socratic.DataAccess
         /// </summary>
         /// <typeparam cref="Microsoft.EntityFrameworkCore.DbContext" name="TContext"></typeparam>
         /// <typeparam name="T"></typeparam>
-        public IRepository<TContext, T> Context<T>() where T : class, IDbEntity => repoFactory.Get<T>();
+        public IContextualRepository<TContext, T> Context<T>() where T : class, IDbEntity => repoFactory.Get<T>();
 
         /// <summary>
         /// Commit the pending transaction within DbContext and save changes
