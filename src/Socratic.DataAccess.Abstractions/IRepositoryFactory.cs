@@ -4,7 +4,7 @@ namespace Socratic.DataAccess.Abstractions
 {
     public interface IRepositoryFactory<TContext> where TContext : DbContext
     {
-         IRepository<TContext, TEntity> Get<TEntity>() where TEntity : class, IDbEntity;
+         IContextualRepository<TContext, TEntity> Get<TEntity>() where TEntity : class, IDbEntity;
          IDirectRepository Get();
     }
 }

@@ -7,7 +7,7 @@ namespace Socratic.DataAccess.Abstractions
     {         
         IDirectRepository Database { get; }
         
-        IRepository<TContext, TEntity> Context<TEntity>() where TEntity : class, IDbEntity;        
+        IContextualRepository<TContext, TEntity> Context<TEntity>() where TEntity : class, IDbEntity;        
 
         Task CommitAsync();
 

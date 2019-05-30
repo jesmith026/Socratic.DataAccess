@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Socratic.DataAccess.Abstractions
 {
-    public interface IRepository<TContext, TEntity> 
+    public interface IContextualRepository<TContext, TEntity> 
         where TContext : DbContext
         where TEntity : class, IDbEntity
     {
