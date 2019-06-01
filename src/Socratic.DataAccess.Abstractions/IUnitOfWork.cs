@@ -11,6 +11,8 @@ namespace Socratic.DataAccess.Abstractions
 
         Task CommitAsync();
 
+        void Commit() => CommitAsync().Wait();
+
         void Rollback();
     }
 }

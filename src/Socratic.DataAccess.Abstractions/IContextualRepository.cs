@@ -11,13 +11,15 @@ namespace Socratic.DataAccess.Abstractions
         IQueryable<TEntity> GetAll();
         
         Task<TEntity> GetByIdAsync(int id);
+        TEntity GetById(int id) => GetByIdAsync(id).Result;
 
         Task AddAsync(TEntity entity);
+        void Add(TEntity entity) => AddAsync(entity).Wait();
 
         void Update(TEntity entity);
 
         void Delete(TEntity entity);
 
-        void DeleteAsync(int id);
+        Task DeleteAsync(int id);
     }
 }

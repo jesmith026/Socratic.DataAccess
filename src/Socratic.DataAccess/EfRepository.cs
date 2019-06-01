@@ -100,7 +100,7 @@ namespace Socratic.DataAccess
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public virtual async void DeleteAsync(int id)
+        public virtual async Task DeleteAsync(int id)
         {
             var entity = await GetByIdAsync(id);
             if (entity == null) return;
