@@ -1,0 +1,400 @@
+{
+	"info": {
+		"_postman_id": "9e7cc4e2-e9e2-4722-b398-9bc60f9a82f9",
+		"name": "SchoolCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Regression",
+			"item": [
+				{
+					"name": "Add New Student",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "162baea9-7a6b-4bb1-8dc2-f93f14279fca",
+								"exec": [
+									"pm.test('response is Ok', () => {",
+									"   pm.response.to.have.status(200); ",
+									"});",
+									"",
+									"pm.test('response body has new student ID', () => {",
+									"    pm.expect(+responseBody).to.be.a('number');",
+									"});",
+									"",
+									"pm.environment.set('studentId', responseBody);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"{{studentName}}\""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get New Student",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b6e925a7-5fb2-47ad-96c7-187929b63205",
+								"exec": [
+									"pm.test('response is Ok', () => {",
+									"   pm.response.to.have.status(200); ",
+									"});",
+									"",
+									"pm.test('response body should be the expected name', () => {",
+									"    pm.response.to.have.body(pm.environment.get('studentName'));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/students/{{studentId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"students",
+								"{{studentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update New Student",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "5c27d0d0-3922-4901-ac40-a0a6d49a4b22",
+								"exec": [
+									"pm.environment.set('updatedStudentName', 'Socratic Programmer Updated');"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "7507cd25-b281-4a29-a0ea-04102116a11e",
+								"exec": [
+									"pm.test('response is Ok', () => {",
+									"   pm.response.to.have.status(200); ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"{{updatedStudentName}}\"\""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/students/{{studentId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"students",
+								"{{studentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Updated Student",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b6e925a7-5fb2-47ad-96c7-187929b63205",
+								"exec": [
+									"pm.test('response is Ok', () => {",
+									"   pm.response.to.have.status(200); ",
+									"});",
+									"",
+									"pm.test('response body should be the expected updated name', () => {",
+									"    pm.response.to.have.body(pm.environment.get('updatedStudentName'));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/students/{{studentId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"students",
+								"{{studentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete New Student",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4696c96f-9fd3-48fd-a562-4b8fbe537f01",
+								"exec": [
+									"pm.test('response is Ok', () => {",
+									"   pm.response.to.have.status(200); ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/students/{{studentId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"students",
+								"{{studentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Deleted Student",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b6e925a7-5fb2-47ad-96c7-187929b63205",
+								"exec": [
+									"pm.test('response is Ok', () => {",
+									"   pm.response.to.have.status(200); ",
+									"});",
+									"",
+									"pm.test('response body should contain expected error message of unable to find student', () => {",
+									"    pm.response.to.have.body('Unable to find student with that id');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/students/{{studentId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"students",
+								"{{studentId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d2381ceb-9891-4841-8d79-88a8d4b83aa2",
+						"type": "text/javascript",
+						"exec": [
+							"pm.environment.set(\"studentName\", \"Socratic Programmer\");"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "1c6415ec-3783-422b-a1a6-1e59990a6a57",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "http://localhost:8080/api/values/2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\"Socratic Programmer\""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/values/2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/students/21",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"students",
+						"21"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/values/2",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/students/23",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"students",
+						"23"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/values/3",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\"me\""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/students/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"students",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

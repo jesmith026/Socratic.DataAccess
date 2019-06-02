@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+  db:
+    image: microsoft/mssql-server-linux:latest
+    volumes:
+      - db-data:/var/lib/sql
+    networks: 
+      - app-net
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: P@ssw0rd
+    ports: 
+      - "1433:1433"
+  dockerapi:
+    image: ${DOCKER_REGISTRY-}dockerapi
+    build:
+      context: .
+      dockerfile: src/api/Dockerfile
+    depends_on: 
+      - db
+    networks: 
+      - app-net  
+volumes:
+  db-data:
+networks:
+  app-net:
