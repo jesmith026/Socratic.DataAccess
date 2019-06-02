@@ -5,6 +5,8 @@ using Socratic.DataAccess.Abstractions;
 
 namespace Socratic.DataAccess
 {
+    //TODO: using IServiceProvider rather than newing up objects here so that it's more extensible.
+
     /// <summary>
     /// Dynamically create the requested repositories
     /// </summary>

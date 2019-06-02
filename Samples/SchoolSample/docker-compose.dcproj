@@ -5,7 +5,7 @@
     <DockerTargetOS>Linux</DockerTargetOS>
     <ProjectGuid>cc71cc93-2f35-4675-ba68-4d54aba3f295</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
-    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/api/values</DockerServiceUrl>
+    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/api/students</DockerServiceUrl>
     <DockerServiceName>dockerapi</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
